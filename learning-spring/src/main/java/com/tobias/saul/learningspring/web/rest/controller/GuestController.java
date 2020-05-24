@@ -1,4 +1,4 @@
-package com.tobias.saul.learningspring.web.controller;
+package com.tobias.saul.learningspring.web.rest.controller;
 
 import java.util.List;
 
