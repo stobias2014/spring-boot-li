@@ -18,10 +18,10 @@ public class Reservation {
 	private Long reservationId;
 	@OneToOne
 	@JoinColumn(name = "ROOM_ID")
-	private Long roomId;
+	private Room room;
 	@OneToOne
 	@JoinColumn(name = "GUEST_ID")
-	private Long guestId;
+	private Guest guest;
 	@Column(name = "RESERVATION_DATE")
 	private Date reservationDate;
 	
@@ -35,20 +35,20 @@ public class Reservation {
 		this.reservationId = reservationId;
 	}
 
-	public Long getRoomId() {
-		return roomId;
+	public Room getRoom() {
+		return room;
 	}
 
-	public void setRoomId(Long roomId) {
-		this.roomId = roomId;
+	public void setRoom(Room room) {
+		this.room = room;
 	}
 
-	public Long getGuestId() {
-		return guestId;
+	public Guest getGuest() {
+		return guest;
 	}
 
-	public void setGuestId(Long guestId) {
-		this.guestId = guestId;
+	public void setGuest(Guest guest) {
+		this.guest = guest;
 	}
 
 	public Date getReservationDate() {
@@ -63,10 +63,10 @@ public class Reservation {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((guestId == null) ? 0 : guestId.hashCode());
+		result = prime * result + ((guest == null) ? 0 : guest.hashCode());
 		result = prime * result + ((reservationDate == null) ? 0 : reservationDate.hashCode());
 		result = prime * result + ((reservationId == null) ? 0 : reservationId.hashCode());
-		result = prime * result + ((roomId == null) ? 0 : roomId.hashCode());
+		result = prime * result + ((room == null) ? 0 : room.hashCode());
 		return result;
 	}
 
@@ -79,10 +79,10 @@ public class Reservation {
 		if (getClass() != obj.getClass())
 			return false;
 		Reservation other = (Reservation) obj;
-		if (guestId == null) {
-			if (other.guestId != null)
+		if (guest == null) {
+			if (other.guest != null)
 				return false;
-		} else if (!guestId.equals(other.guestId))
+		} else if (!guest.equals(other.guest))
 			return false;
 		if (reservationDate == null) {
 			if (other.reservationDate != null)
@@ -94,20 +94,18 @@ public class Reservation {
 				return false;
 		} else if (!reservationId.equals(other.reservationId))
 			return false;
-		if (roomId == null) {
-			if (other.roomId != null)
+		if (room == null) {
+			if (other.room != null)
 				return false;
-		} else if (!roomId.equals(other.roomId))
+		} else if (!room.equals(other.room))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Reservation [reservationId=" + reservationId + ", roomId=" + roomId + ", guestId=" + guestId
+		return "Reservation [reservationId=" + reservationId + ", room=" + room + ", guest=" + guest
 				+ ", reservationDate=" + reservationDate + "]";
 	}
-	
-	
 
 }
