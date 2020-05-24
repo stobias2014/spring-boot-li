@@ -22,7 +22,7 @@ public class Reservation {
 	@OneToOne
 	@JoinColumn(name = "GUEST_ID")
 	private Guest guest;
-	@Column(name = "RESERVATION_DATE")
+	@Column(name = "RES_DATE")
 	private Date reservationDate;
 	
 	public Reservation() {}
