@@ -12,11 +12,11 @@ import com.tobias.saul.guestservices.repository.GuestRepository;
 
 @RestController
 @RequestMapping("/api/v1/guests")
-public class GuestWebServices {
+public class GuestWebService {
 	
 	private final GuestRepository guestRepository;
 	
-	public GuestWebServices(GuestRepository guestRepository) {
+	public GuestWebService(GuestRepository guestRepository) {
 		this.guestRepository = guestRepository;
 	}
 	
