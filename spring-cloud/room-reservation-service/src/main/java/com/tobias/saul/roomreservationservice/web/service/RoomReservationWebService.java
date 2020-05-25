@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.tobias.saul.roomreservationservice.client.RoomClient;
 import com.tobias.saul.roomreservationservice.dto.RoomReservation;
 import com.tobias.saul.roomreservationservice.model.Room;
 
@@ -18,10 +19,10 @@ import com.tobias.saul.roomreservationservice.model.Room;
 @RequestMapping("/api/v1/room-reservations")
 public class RoomReservationWebService {
 	
-	private final RestTemplate restTemplate;
+	private final RoomClient roomClient;
 	
-	public RoomReservationWebService(RestTemplate restTemplate) {
-		this.restTemplate = restTemplate;
+	public RoomReservationWebService(RoomClient roomClient) {
+		this.roomClient = roomClient;
 	}
 	
 	@GetMapping
@@ -39,7 +40,7 @@ public class RoomReservationWebService {
 	}
 	
 	public List<Room> getAllRooms() {
-		ResponseEntity<List<Room>> roomResponse = restTemplate.exchange("http://ROOMSERVICES/rooms",
+		ResponseEntity<List<Room>> roomResponse = restTemplate.exchange("http://ROOMSERVICES/api/v1/rooms",
 				HttpMethod.GET, null, new ParameterizedTypeReference<List<Room>>() {});
 		return roomResponse.getBody();
 	}
