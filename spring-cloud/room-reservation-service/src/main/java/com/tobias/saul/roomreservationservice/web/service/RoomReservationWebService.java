@@ -27,7 +27,7 @@ public class RoomReservationWebService {
 	
 	@GetMapping
 	public List<RoomReservation> getRoomReservations() {
-		List<Room> rooms = getAllRooms();
+		List<Room> rooms = roomClient.getAllRooms();
 		List<RoomReservation> roomReservations = new ArrayList<RoomReservation>();
 		rooms.forEach(room -> {
 			RoomReservation roomReservation = new RoomReservation();
@@ -39,10 +39,5 @@ public class RoomReservationWebService {
 		return roomReservations;
 	}
 	
-	public List<Room> getAllRooms() {
-		ResponseEntity<List<Room>> roomResponse = restTemplate.exchange("http://ROOMSERVICES/api/v1/rooms",
-				HttpMethod.GET, null, new ParameterizedTypeReference<List<Room>>() {});
-		return roomResponse.getBody();
-	}
 
 }
