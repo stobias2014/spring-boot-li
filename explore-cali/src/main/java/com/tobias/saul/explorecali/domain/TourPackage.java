@@ -13,7 +13,13 @@ public class TourPackage {
 	private String name;
 	
 	public TourPackage() {}
-	
+		
+	public TourPackage(String code, String name) {
+		super();
+		this.code = code;
+		this.name = name;
+	}
+
 	public String getCode() {
 		return code;
 	}
