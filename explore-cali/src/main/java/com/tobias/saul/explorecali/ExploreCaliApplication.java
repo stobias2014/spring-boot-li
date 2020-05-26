@@ -1,5 +1,8 @@
 package com.tobias.saul.explorecali;
 
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+import static com.fasterxml.jackson.annotation.PropertyAccessor.FIELD;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
@@ -10,17 +13,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tobias.saul.explorecali.domain.Difficulty;
 import com.tobias.saul.explorecali.domain.Region;
 import com.tobias.saul.explorecali.service.TourPackageService;
 import com.tobias.saul.explorecali.service.TourService;
-
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
-import static com.fasterxml.jackson.annotation.PropertyAccessor.FIELD;
 
 
 @SpringBootApplication
