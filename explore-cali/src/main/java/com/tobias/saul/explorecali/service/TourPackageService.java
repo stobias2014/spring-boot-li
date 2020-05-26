@@ -25,6 +25,10 @@ public class TourPackageService {
 		return tourPackageRepository.findById(tourPackageCode).get();
 	}
 	
+	public long getTotalCount() {
+		return tourPackageRepository.count();
+	}
+	
 	public Iterable<TourPackage> getAllTourPackages() {
 		return tourPackageRepository.findAll();
 	}

@@ -8,4 +8,6 @@ import com.tobias.saul.explorecali.domain.TourPackage;
 @Repository
 public interface TourPackageRepository extends JpaRepository<TourPackage, String>{
 
+	TourPackage findByName(String tourPackageName);
+
 }
