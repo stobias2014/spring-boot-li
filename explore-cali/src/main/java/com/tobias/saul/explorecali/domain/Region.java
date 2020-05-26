@@ -11,7 +11,7 @@ public enum Region {
 		this.label = label;
 	}
 
-	public static Region findByRegion(String label) {
+	public static Region findByLabel(String label) {
 		for(Region r : Region.values()) {
 			if(r.label.equalsIgnoreCase(label)) {
 				return r;
