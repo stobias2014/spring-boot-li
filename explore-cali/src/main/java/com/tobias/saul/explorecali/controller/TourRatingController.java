@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -47,10 +50,14 @@ public class TourRatingController {
 	}
 	
 	@GetMapping
-	public List<TourRatingDto> getAllTourRatingsForTour(@PathVariable("tourId") Long tourId) {
+	public Page<TourRatingDto> getAllTourRatingsForTour(@PathVariable("tourId") Long tourId, Pageable pageable) {
 		verifyTour(tourId);
-		return tourRatingRepository.findByTourRatingPkTourTourId(tourId).stream()
-				.map(tourRating -> new TourRatingDto(tourRating.getScore(), tourRating.getComment(), tourRating.getTourRatingPk().getCustomerId())).collect(Collectors.toList());
+		Page<TourRating> ratings = tourRatingRepository.findByTourRatingPkTourTourId(tourId, pageable);
+		return new PageImpl<TourRatingDto>(
+				ratings.get().map(TourRatingDto::new).collect(Collectors.toList()),
+				pageable,
+				ratings.getTotalElements()
+				);
 	}
 	
 	@GetMapping("/average")
@@ -72,7 +79,6 @@ public class TourRatingController {
 	}
 	
 	@PatchMapping
-	
 	public TourRatingDto updateWithPatch(@PathVariable("tourId") Long tourId, @RequestBody @Validated TourRatingDto tourRatingDto) {
 		TourRating tourRating = verifyTourRating(tourId, tourRatingDto.getCustomerId());
 		if(tourRating.getScore() != null) {
