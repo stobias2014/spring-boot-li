@@ -16,7 +16,7 @@ public class TourRating {
 	
 	public TourRating() {}
 
-	public TourRating(TourRatingPk tourRatingPk, Integer score, String comment, Long customerId) {
+	public TourRating(TourRatingPk tourRatingPk, Integer score, String comment) {
 		this.tourRatingPk = tourRatingPk;
 		this.score = score;
 		this.comment = comment;
