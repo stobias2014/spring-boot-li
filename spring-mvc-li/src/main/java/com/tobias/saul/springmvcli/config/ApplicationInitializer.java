@@ -16,6 +16,8 @@ public class ApplicationInitializer implements WebApplicationInitializer{
 		
 		AnnotationConfigWebApplicationContext webcx = new AnnotationConfigWebApplicationContext();
 		
+		webcx.register(ApplicationConfig.class);
+		
 		ServletRegistration.Dynamic servletRegistration = 
 				servletContext.addServlet("mvc", new DispatcherServlet(webcx));
 		
