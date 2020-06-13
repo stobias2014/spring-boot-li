@@ -19,7 +19,7 @@ public class ProductService {
 	}
 	
 	public List<Product> findByName(String name) {
-		List<Product> products = productRepository.findByNameLike(name);
+		List<Product> products = productRepository.findByNameContaining(name);
 		
 		return products;
 	}

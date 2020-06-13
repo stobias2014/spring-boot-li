@@ -10,6 +10,6 @@ import com.tobias.saul.springmvcli.model.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>{
 
-	List<Product> findByNameLike(String name);
+	List<Product> findByNameContaining(String name);
 
 }

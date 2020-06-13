@@ -21,6 +21,7 @@ public class Product {
 	private boolean inStock;
 	private String name;
 	private double price;
+	
 	public Long getProductId() {
 		return productId;
 	}

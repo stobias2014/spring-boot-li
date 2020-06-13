@@ -14,16 +14,21 @@
 <body>
 	<h1>Products</h1>
 
-	<sf:form action="searchForProducts" method="POST"
-		modelAttribute="product">
-		<sf:input path="name" type="search" name="search"
+	<form action="searchByName" method="get">
+		<input path="name" name="name"
 			placeholder="Search..." />
-		<br>
+			
+		<input type="submit" value="Search">
+	</form>
 
-		<button type="Submit" name="Search">
-			<i class="fa fa-search"></i>
-		</button>
-	</sf:form>
+	<c:if test="${ !empty(products) }">
+		<c:forEach var="product" items="${products}" >
+			<p>
+				<b> ${product.name} </b>
+			</p>
+		</c:forEach>
+	</c:if>
+
 
 
 </body>
