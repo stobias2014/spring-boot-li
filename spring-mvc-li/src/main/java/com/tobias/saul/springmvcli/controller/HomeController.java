@@ -8,10 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class HomeController {
 	
-	@GetMapping(path = "home")
-	public String goHome() {
+	@GetMapping()
+	public String goToHome() {
 		System.out.println("Inside of home controller");
 		return "index";
+	}
+	
+	@GetMapping(path = "products")
+	public String goToProducts() {
+		return "products";
 	}
 
 }
